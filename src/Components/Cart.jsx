@@ -1,32 +1,50 @@
+import { useSelector } from "react-redux";
+
 let Cart = ()=>{
+
+  let cartList = useSelector((state)=>{
+    let filterdCartList = state.filter((el)=>{
+        return el.qty > 0;
+    })
+
+    return filterdCartList;
+  })
+
+  let totalAmount = 0;
+
     return <>
     <table className="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">S No.</th>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Amount</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  {
+    cartList.map((el, index)=>{
+      let amount = el.qty * el.price;
+      totalAmount+=amount;
+      return <tr key={index}>
+        <td>{index+1}.</td>
+        <td>{el.name}</td>
+        <td>Rs. {el.price}</td>
+        <td>{el.qty}</td>
+        <td>Rs. {amount}</td>
+      </tr>
+    })
+  }
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td>Rs. {totalAmount}</td>
+  </tr>
   </tbody>
 </table>
     </>

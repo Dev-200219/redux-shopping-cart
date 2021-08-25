@@ -1,12 +1,20 @@
+import { useHistory } from "react-router-dom";
 import "./ProductCard.css";
 
-let ProductCard = ()=>{
+let ProductCard = (props)=>{
+
+    let historyObj = useHistory();
 
     return(<div className="product-card">
+
         <div  
+         onClick={()=>{
+            historyObj.push(`/preview/${props.data.id}`)
+            }} 
         className="product-img">
-            <img src="https://m.media-amazon.com/images/I/61fy+u9uqPL._SL1500_.jpg" alt="some-product" />
+            <img src={props.data.img} alt="some-product" />
         </div>
+
         <div className="product-btn">
             <button>Add to Cart</button>
         </div>

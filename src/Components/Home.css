@@ -1,5 +1,22 @@
-.product-container{
-    margin-top: 4rem;
-    display: flex;
-    justify-content: space-evenly;
+.product-container {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cart-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 50%;
+  background-color: brown;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.cart-btn span{
+    font-size: 2rem;
 }
