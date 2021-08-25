@@ -15,8 +15,10 @@
   justify-content: center;
   align-items: center;
   color: white;
+  cursor: default;
 }
 
 .cart-btn span{
     font-size: 2rem;
+    cursor: default;
 }
